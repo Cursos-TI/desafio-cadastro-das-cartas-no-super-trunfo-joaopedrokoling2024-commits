@@ -1,94 +1,68 @@
-# Desafio Super Trunfo - Países - Cadastro das Cartas
+# Super Trunfo - Países 
 
-Bem-vindo ao desafio "Super Trunfo - Países"! No jogo Super Trunfo, os jogadores comparam os atributos das cartas para determinar a mais forte. O tema deste Super Trunfo é "Países", onde você comparará os atributos das cidades.
+Este repositório contém a implementação do desafio *Super Trunfo - Países* em linguagem C, dividido em três níveis de dificuldade: *Novato, **Aventureiro* e *Mestre*.
 
-A empresa MateCheck contratou você para desenvolver a parte inicial do jogo, que consiste no cadastro das cartas.
+---
 
-O desafio está dividido em três níveis: Novato, Aventureiro e Mestre, com cada nível adicionando mais complexidade ao anterior.  **Você deve escolher qual desafio quer realizar.**
+##  Nível Novato: Cadastro Básico
+No nível Novato, o objetivo é cadastrar *duas cartas* com os seguintes atributos:
 
-🚨 **Atenção:** O nível Novato do desafio é focado apenas no cadastro das cartas, utilizando as funções `scanf` para ler os dados e `printf` para exibi-los.
+- População (int)
+- Área (float)
+- PIB (float)
+- Número de pontos turísticos (int)
 
-## 🎮 Nível Novato: Cadastro Básico
+### Funcionalidades:
+- O usuário insere os dados manualmente via scanf.
+- O programa exibe os dados cadastrados usando printf.
+- *Restrição:* Não usar for, while ou if.
 
-No nível Novato, você iniciará criando o sistema básico do jogo Super Trunfo com o tema "Países". As cartas serão divididas por estados, cada um com quatro cidades.  Imagine um país dividido em oito estados (A a H), e cada estado com quatro cidades (1 a 4).  A combinação forma o código da carta (ex: A01, B02).
+ Arquivo: nivel_novato.c
 
-🚩 **Objetivo:** Criar um programa em C que cadastra **duas** cartas com os seguintes atributos:
+---
 
-*   População (`int`)
-*   Área (`float`)
-*   PIB (`float`)
-*   Número de pontos turísticos (`int`)
+##  Nível Aventureiro: Cálculo de Atributos
+Expansão do nível Novato, com cálculo automático de dois novos atributos:
 
-⚙️ **Funcionalidades do Sistema:**
+- *Densidade Populacional* = População ÷ Área (float)
+- *PIB per Capita* = PIB ÷ População (float)
 
-*   O sistema permitirá ao usuário cadastrar os dados de **duas** cartas manualmente via terminal.
-*   Após o cadastro, o sistema exibirá os dados de cada cidade de forma organizada.
+### Funcionalidades:
+- O usuário continua cadastrando duas cartas.
+- O sistema calcula automaticamente a densidade populacional e o PIB per capita.
+- Os novos atributos são exibidos junto com os demais.
+- *Restrição:* Não usar for, while ou if.
 
-📥 **Entrada** e 📤 **Saída de Dados:**
+ Arquivo: nivel_aventureiro.c
 
-*   O usuário insere os dados de cada carta interativamente via `scanf`.
-*   O programa exibe os dados cadastrados usando `printf`, com cada atributo em uma nova linha.
+---
 
-**Simplificações para o Nível Novato:**
+##  Nível Mestre: Comparação e Super Poder
+Neste nível, além dos cálculos do Aventureiro, são adicionadas as comparações entre cartas e o cálculo do *Super Poder*.
 
-*   Cadastre apenas **duas** cartas.
-*   Concentre-se na leitura, armazenamento e exibição. Não implemente comparações ou outros recursos.
-*   **Não use** laços (`for`, `while`) ou condicionais (`if`, `else`).
+### Novos Recursos:
+- *Comparação de atributos:*  
+  - Exibe 1 se a Carta 1 venceu e 0 se a Carta 2 venceu.
+  - Para *Densidade Populacional* vence o *menor valor*.
+  - Para os demais atributos e Super Poder vence o *maior valor*.
 
+- *Super Poder:*  
+  - Soma de todos os atributos (inclusive calculados).
+  - A densidade populacional é considerada *invertida* (1 / densidade) antes da soma.
+  - Tipo: float.
 
-## 🛡️ Nível Aventureiro: Cálculo de Atributos
+### Alterações:
+- A *População* agora é unsigned long int (para suportar valores grandes).
 
-No nível Aventureiro, você expandirá o sistema para incluir o cálculo de dois novos atributos: Densidade Populacional e PIB per Capita.
+ Arquivo: nivel_mestre.c
 
-🆕 **Diferença em relação ao Nível Novato:**
+---
 
-*   **Novos Atributos:**
-    *   Densidade Populacional: População / Área (`float`)
-    *   PIB per Capita: PIB / População (`float`)
+##  Como compilar e executar
+No terminal, use os seguintes comandos:
 
-⚙️ **Funcionalidades do Sistema:**
-
-*   O sistema calculará automaticamente a Densidade Populacional e o PIB per Capita.
-*   Os novos atributos serão exibidos junto com os demais.
-
-📥 **Entrada** e 📤 **Saída de Dados:**
-
-*   Mesma entrada do nível Novato.
-*   A saída exibirá também os atributos calculados.
-
-**Simplificações para o Nível Intermediário:**
-
-*   Continue cadastrando apenas **duas** cartas.
-*   Continue **sem usar** laços (`for`, `while`) ou condicionais (`if`, `else`).
-
-
-
-## 🏆 Nível Mestre: Comparação e Super Poder
-
-No nível Mestre, você implementará a comparação entre duas cartas e o cálculo do "Super Poder".
-
-🆕 **Diferença em relação ao Nível Aventureiro:**
-
-*   **Comparação de Cartas:** O usuário poderá comparar as duas cartas.
-*   **Super Poder:** Soma de todos os atributos (inclusive os calculados), com a densidade populacional *invertida* antes da soma (1/densidade).  Tipo: `float`.
-
-⚙️ **Funcionalidades do Sistema:**
-
-*   Comparação atributo a atributo, mostrando qual carta venceu (1 se a Carta 1 vence, 0 se a Carta 2 vence).
-*   Para Densidade Populacional, vence a carta com o *menor* valor.
-*   Para os demais atributos (e o Super Poder), vence a carta com o *maior* valor.
-
-📥 **Entrada** e 📤 **Saída de Dados:**
-
-*   Mesma entrada dos níveis anteriores, mas a População agora é `unsigned long int`.
-*   A saída mostrará o resultado da comparação para cada atributo e o Super Poder.
-
-**Observação:**  Preste atenção à conversão de tipos ao calcular o Super Poder!
-
-
-## 🏁 Conclusão
-
-Ao concluir qualquer um dos níveis, você terá dado um passo importante no desenvolvimento do Super Trunfo - Países. Boa sorte e divirta-se programando!
-
-Equipe de Ensino - MateCheck
-content_copy
+### Compilar:
+```bash
+gcc nivel_novato.c -o novato
+gcc nivel_aventureiro.c -o aventureiro
+gcc nivel_mestre.c -o mestre
